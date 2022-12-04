@@ -12,7 +12,7 @@
 
         <div class="player__audio" *ngIf="track.mediaFile">
           <app-audio
-            [src]="track.mediaFile"
+            [src]="B64_HEAD + track.mediaFile"
             [songName]="track.name"
             (end)="onTrackEnd()">
           </app-audio>

@@ -10,11 +10,13 @@
       <div class="player-current">
         <div class="player__cover" [style.backgroundImage]="'url('+track.imageUrl+')'"></div>
 
-        <ng-container *ngIf="track.mediaFile">
-          <audio class="player__audio" controls autoplay>
-            <source [src]="track.mediaFile" type="audio/mpeg">
-          </audio>
-        </ng-container>
+        <div class="player__audio" *ngIf="track.mediaFile">
+          <app-audio
+            [src]="track.mediaFile"
+            [songName]="track.name"
+          >
+          </app-audio>
+        </div>
       </div>
     </div>
   </div>

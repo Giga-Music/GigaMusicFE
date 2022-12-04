@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +10,19 @@ export class ApiService {
 
   protected baseURL: string = environment.apiURL;
 
-  protected headers: any = {
-    Authorization: `Bearer ${sessionStorage.getItem('token') || ''}`
-  };
+  public token: BehaviorSubject<string> = new BehaviorSubject(sessionStorage.getItem('token') || '');
+
+  protected headers: any = {};
 
   constructor(
     private http: HttpClient,
-  ) {  }
+  ) {
+    this.token.subscribe({
+      next: (value: string) => {
+        if(value) this.headers['Authorization'] = `Bearer ${value}`
+      }
+    })
+  }
 
   private getRequest(data: any) {
 
@@ -47,7 +53,6 @@ export class ApiService {
       };
     });
   }
-
 
   public get(url: string, data: any): Observable<any> {
     return new Observable((observer) => {

@@ -37,8 +37,9 @@ export class PlaylistsComponent implements OnInit{
 
   public getPlaylists(): void{
     this.isLoading = true;
+    const sort = {key: 'name', dir: 'asc'};
 
-    this.playlistsService.getPlaylists({search: this.search}).subscribe({
+    this.playlistsService.getPlaylists({search: this.search}, sort).subscribe({
       next: (res: Playlist[]) => {
         this.playlists = res;
         this.isLoading = false;

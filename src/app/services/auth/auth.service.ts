@@ -15,6 +15,7 @@ export class AuthService {
   }
 
   public setAuth(token: string): void {
+    this.api.token.next(token);
     sessionStorage.setItem('token', token);
   }
 

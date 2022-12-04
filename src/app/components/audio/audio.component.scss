@@ -85,15 +85,15 @@
       }
     }
     .volume-container {
+      position: relative;
+      z-index: 2;
       cursor: pointer;
+
       .volume-button {
         height: 26px;
         display: flex;
         align-items: center;
       }
-
-      position: relative;
-      z-index: 2;
 
       .volume-slider {
         height: 9px;
@@ -113,6 +113,15 @@
           width: 75%;
           border-radius: 16px;
         }
+      }
+      &:after{
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height: 90%;
+        width: 250%;
+        translate: -50% -50%;
       }
       &:hover {
         .volume-slider {

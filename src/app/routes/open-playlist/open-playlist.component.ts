@@ -24,7 +24,7 @@ export class OpenPlaylistComponent implements OnInit, OnDestroy {
 
   public isLoading: boolean = false;
 
-  private readonly B64_HEAD: string = 'data:audio/mpeg;base64,';
+  public readonly B64_HEAD: string = 'data:audio/mpeg;base64,';
 
   public subsription: Subscription | undefined;
 
@@ -92,9 +92,8 @@ export class OpenPlaylistComponent implements OnInit, OnDestroy {
 
     this.subsription = this.tracksService.getTrackById(this.trackId).subscribe({
       next: (res: Track) => {
-        this.track = {} as Track;
         this.track = res;
-        this.track.mediaFile = this.B64_HEAD + this.track.mediaFile;
+        this.trackId = res.id || '';
         this.isLoading = false;
       },
       error: (err) => {
