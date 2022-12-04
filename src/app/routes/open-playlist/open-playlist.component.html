@@ -26,6 +26,9 @@
           <li class="player-items__track" *ngFor="let t of tracks" [class.active]="t.id === track.id" (click)="onTrackClick(t.id || '')">
             <div class="cover" [style.backgroundImage]="'url('+t.imageUrl+')'"></div>
             <p class="name">{{t.name}}</p>
+            <a class="icon" [href]="'/track/' + t.id" target="_blank">
+              <i class="pi pi-external-link" pTooltip="Open in new tab" [routerLink]=""></i>
+            </a>
           </li>
         </div>
       </ul>
