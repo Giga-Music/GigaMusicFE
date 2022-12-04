@@ -74,6 +74,11 @@
         color: #fff;
       }
 
+      &-inner{
+        overflow: auto;
+        max-height: 420px;
+      }
+
       &__track{
         display: flex;
         gap: 15px;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { TracksEditCreateComponent } from 'src/app/components/tracks-edit-create/tracks-edit-create.component';
@@ -20,6 +21,7 @@ export class TracksComponent implements OnInit{
     private tracksService: TracksService,
     private messageService: MessageService,
     private dialogService: DialogService,
+    private router: Router,
     private confirmService: ConfirmationService
   ) {
 
@@ -87,6 +89,10 @@ export class TracksComponent implements OnInit{
         }
       })
     }, 200)
+  }
+
+  public openTrack(track: Track): void {
+    this.router.navigate(['/track/'+track.id]);
   }
 
   public handleOnClose(res: any): void{

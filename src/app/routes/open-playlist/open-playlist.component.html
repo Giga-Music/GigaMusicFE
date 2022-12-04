@@ -21,10 +21,13 @@
 
       <ul class="player-items">
         <h4 class="player-items__header">Tracks</h4>
-        <li class="player-items__track" *ngFor="let t of tracks" [class.active]="t.id === track.id" (click)="onTrackClick(t.id || '')">
-          <div class="cover" [style.backgroundImage]="'url('+t.imageUrl+')'"></div>
-          <p class="name">{{t.name}}</p>
-        </li>
+
+        <div class="player-items-inner">
+          <li class="player-items__track" *ngFor="let t of tracks" [class.active]="t.id === track.id" (click)="onTrackClick(t.id || '')">
+            <div class="cover" [style.backgroundImage]="'url('+t.imageUrl+')'"></div>
+            <p class="name">{{t.name}}</p>
+          </li>
+        </div>
       </ul>
     </div>
   </div>

@@ -18,6 +18,7 @@
             <td>{{track.description}}</td>
             <td>
               <span class="p-buttonset">
+                <button pButton type="button" label="Open" icon="pi pi-play" class="p-button-outlined" (click)="openTrack(track)"></button>
                 <button pButton type="button" label="Edit" icon="pi pi-check" class="p-button-outlined" (click)="editTrack(track)"></button>
                 <button pButton type="button" label="Delete" icon="pi pi-trash" class="p-button-outlined p-button-danger" (click)="deleteTrack(track.id, $event)" [id]="'delete-'+track.id"></button>
               </span>
