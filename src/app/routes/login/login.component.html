@@ -1,0 +1,30 @@
+<main class="main">
+  <div class="container">
+    <div class="form" [formGroup]="loginForm">
+      <h2 class="form-title">Login</h2>
+
+      <div class="form-field">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input type="text" pInputText placeholder="Username" formControlName="username">
+        </div>
+        <p class="error" *ngIf="loginForm.get('username')?.dirty && loginForm.get('username')?.errors">Username is required!</p>
+      </div>
+
+      <div class="form-field">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">#</span>
+          <input type="password" pInputText placeholder="Password" formControlName="password">
+        </div>
+        <p class="error" *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.errors">Password is required!</p>
+      </div>
+
+      <button pButton type="button" label="Login" class="p-button-secondary" (click)="login()" [disabled]="isLoading" [loading]="isLoading">
+      </button>
+    </div>
+  </div>
+
+</main>
+
+<p-toast position="bottom-right" [baseZIndex]="5000"></p-toast>
+

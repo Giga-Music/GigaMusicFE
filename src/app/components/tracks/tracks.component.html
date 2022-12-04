@@ -1,0 +1,11 @@
+<div class="items">
+  <div class="item" *ngFor="let p of tracks" (click)="openTrack(p.id || '')">
+    <div class="item__circle" [style.backgroundImage]="'url('+p.imageUrl+')'">
+      <div class="item__play"><i class="pi pi-play"></i></div>
+    </div>
+
+    <h3 class="item__title">{{p.name}}</h3>
+  </div>
+
+  <h2 *ngIf="!tracks || !tracks.length">No tracks availiable.</h2>
+</div>

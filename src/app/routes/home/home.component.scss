@@ -1,0 +1,38 @@
+.main {
+  position: relative;
+
+  .container.loading{
+    filter: blur(3px);
+  }
+
+  .spinner{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+  }
+}
+
+.section__title{
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.playlist-search{
+  width: 100%;
+  margin: 25px 0;
+
+  input{
+    width: 100%;
+    height: 50px;
+  }
+}
+
+.playlist-section{
+  margin: 25px 0;
+}
+
+.tracks-section{
+  margin: 50px 0 25px;
+}

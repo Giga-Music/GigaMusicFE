@@ -1,0 +1,20 @@
+<div class="items">
+  <div class="item" *ngFor="let p of playlists">
+    <div class="item__circle" [style.backgroundImage]="'url('+p.imageUrl+')'" (click)="openPlaylist(p.id)">
+      <div class="item__play"><i class="pi pi-play"></i></div>
+      <div class="item__circle_blur" [style.backgroundImage]="'url('+p.imageUrl+')'"></div>
+    </div>
+
+    <p-rating
+      [readonly]="false"
+      [stars]="5"
+      [cancel]="false"
+      (onRate)="onRate($event, p.id || '')"
+      [ngModel]="p.averageRating || 0">
+    </p-rating>
+
+    <h3 class="item__title">{{p.name}}</h3>
+  </div>
+
+  <h2 *ngIf="!playlists || !playlists.length">No playlists availiable.</h2>
+</div>

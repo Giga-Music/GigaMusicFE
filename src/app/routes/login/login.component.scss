@@ -1,0 +1,45 @@
+.main {
+  margin: 25px 0;
+  min-height: 600px;
+
+  .form{
+    max-width: 350px;
+    margin: 50px auto;
+
+    &-title{
+      color: #fff;
+      font-size: 26px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    &-field{
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .error{
+      font-size: 13px;
+      color: rgb(223, 78, 78);
+    }
+
+    .p-button-secondary{
+      gap: 5px;
+      height: 45px;
+      text-align: center;
+      width: 100%;
+      margin: 15px auto;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}
+
+:host ::ng-deep .p-progress-spinner {
+  width: 25px;
+  height: 25px;
+
+  .p-progress-spinner-circle{
+    stroke: red !important;
+  }
+}

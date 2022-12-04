@@ -1,0 +1,34 @@
+@import "variables";
+
+.header{
+  padding: 15px 45px;
+  background-color: $black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-logo{
+    cursor: pointer;
+  }
+
+  .user-wrapper{
+    width: 30px;
+    height: 30px;
+    color: $white;
+    font-size: 8px;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid $white;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #fff;
+      color: $black;
+    }
+
+    i{
+      font-size: 13px;
+      line-height: 25px;
+    }
+  }
+}

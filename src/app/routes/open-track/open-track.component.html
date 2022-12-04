@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="player-wrapper" [class.loading]="isLoading">
+    <div class="player-header">
+      <i class="pi pi-angle-left" routerLink="/"></i>
+      <h2>{{track.name}}</h2>
+    </div>
+    <div class="player-body">
+      <div class="player__blur" [style.backgroundImage]="'url('+track.imageUrl+')'"></div>
+
+      <div class="player-current">
+        <div class="player__cover" [style.backgroundImage]="'url('+track.imageUrl+')'"></div>
+
+        <ng-container *ngIf="track.mediaFile">
+          <audio class="player__audio" controls autoplay>
+            <source [src]="track.mediaFile" type="audio/mpeg">
+          </audio>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <p-progressSpinner class="spinner" *ngIf="isLoading" [strokeWidth]="'4'"></p-progressSpinner>
+</div>

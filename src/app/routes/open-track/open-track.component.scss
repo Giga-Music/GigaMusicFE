@@ -1,0 +1,71 @@
+
+.player-wrapper{
+  margin: 50px auto;
+
+  &.loading{
+    filter: blur(3px);
+    pointer-events: none;
+  }
+
+  .player-header{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    font-size: 48px;
+    padding: 5px 0;
+    color: #fff;
+
+    i{
+      font-size: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-right: 15px;
+    }
+  }
+
+  .player-body{
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    position: relative;
+    z-index: 1;
+
+    .player__blur{
+      width: 80%;
+      height: 80%;
+      filter: blur(75px);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: cover;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: -1;
+      translate: -50% -50%;
+    }
+
+    .player-current{
+      width: calc(100% - 350px);
+
+      .player__cover{
+        width: 100%;
+        height: 300px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 50%;
+      }
+
+      .player__audio{
+        width: 100%;
+        margin: 50px auto;
+      }
+    }
+  }
+}
+
+.spinner{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+}

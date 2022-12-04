@@ -1,0 +1,43 @@
+<form [formGroup]="form" class="form">
+  <div class="left-img" [style.backgroundImage]="'url(' + form.get('imageUrl')?.value + ')'"></div>
+
+  <div class="fields-wrap">
+    <div class="form-field">
+      <div class="p-float-label">
+        <input id="name" type="text" pInputText placeholder="Name" formControlName="name">
+        <label for="name">Name</label>
+      </div>
+      <ng-container *ngIf="form.get('name')?.touched && form.get('name')?.errors">
+        <p class="error" *ngIf="form.get('name')?.errors?.['required']">Name is required!</p>
+        <p class="error" *ngIf="form.get('name')?.errors?.['maxlength']">Name is too long! No more than (180 chars)</p>
+      </ng-container>
+    </div>
+
+    <div class="form-field">
+      <div class="p-float-label">
+        <input id="imageUrl" type="text" pInputText placeholder="Image URL" formControlName="imageUrl">
+        <label for="imageUrl">Image URL</label>
+      </div>
+      <ng-container *ngIf="form.get('imageUrl')?.touched && form.get('imageUrl')?.errors">
+        <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">Image URL is required!</p>
+        <p class="error" *ngIf="form.get('imageUrl')?.errors?.['maxlength']">Image URL is too long! No more than (180 chars)</p>
+      </ng-container>
+    </div>
+
+    <div class="form-field">
+      <div class="p-float-label">
+        <textarea id="description" type="text" pInputTextarea placeholder="Description" formControlName="description"></textarea>
+        <label for="description">Description</label>
+      </div>
+      <ng-container *ngIf="form.get('description')?.touched && form.get('description')?.errors">
+        <p class="error" *ngIf="form.get('description')?.errors?.['required']">Description is required!</p>
+        <p class="error" *ngIf="form.get('description')?.errors?.['maxlength']">Description is too long! No more than (180 chars)</p>
+      </ng-container>
+    </div>
+  </div>
+
+  <span class="buttons-wrap">
+    <button pButton type="button" label="Save" icon="pi pi-check" class="p-button-outlined" (click)="savePlaylist()" [loading]="!form.enabled"></button>
+    <button pButton type="button" label="Cancel" icon="pi pi-times" class="p-button-outlined p-button-danger" (click)="cancel()"></button>
+  </span>
+</form>

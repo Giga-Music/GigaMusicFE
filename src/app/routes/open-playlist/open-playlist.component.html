@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="player-wrapper" [class.loading]="isLoading">
+    <div class="player-header">
+      <i class="pi pi-angle-left" routerLink="/"></i>
+      <h2>{{playlist.name}}</h2>
+    </div>
+    <div class="player-body">
+      <div class="player__blur" [style.backgroundImage]="'url('+track.imageUrl+')'"></div>
+
+      <div class="player-current">
+        <div class="player__cover" [style.backgroundImage]="'url('+track.imageUrl+')'"></div>
+
+        <div class="player__audio" *ngIf="track.mediaFile">
+          <app-audio
+            [src]="track.mediaFile"
+            [songName]="track.name"
+            (end)="onTrackEnd()">
+          </app-audio>
+        </div>
+      </div>
+
+      <ul class="player-items">
+        <h4 class="player-items__header">Tracks</h4>
+        <li class="player-items__track" *ngFor="let t of tracks" [class.active]="t.id === track.id" (click)="onTrackClick(t.id || '')">
+          <div class="cover" [style.backgroundImage]="'url('+t.imageUrl+')'"></div>
+          <p class="name">{{t.name}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <p-progressSpinner class="spinner" *ngIf="isLoading" [strokeWidth]="'4'"></p-progressSpinner>
+</div>

@@ -1,0 +1,26 @@
+.section{
+  display: flex;
+  gap: 50px;
+  margin: 50px auto;
+}
+
+.aside{
+  min-width: 160px;
+  margin-top: 15px;
+
+  .item{
+    list-style: none;
+    font-size: 24px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    &.active{
+      border-bottom: 2px solid #461daa;
+    }
+  }
+}
+
+.content{
+  width: 100%;
+  min-height: 500px;
+}

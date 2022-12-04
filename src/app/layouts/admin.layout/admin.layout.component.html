@@ -1,0 +1,23 @@
+<main>
+  <app-header></app-header>
+
+  <div class="container">
+    <section class="section">
+      <aside class="aside">
+        <ul class="items">
+          <li class="item" *ngFor="let i of items" [routerLink]="i.link" [routerLinkActive]="'active'">
+            <h2>
+              {{i.label}}
+            </h2>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </section>
+  </div>
+
+  <app-footer></app-footer>
+</main>

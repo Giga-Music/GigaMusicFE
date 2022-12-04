@@ -1,0 +1,22 @@
+<main class="main">
+  <div class="container" [class.loading]="isLoading">
+
+    <span class="p-input-icon-left playlist-search">
+      <i class="pi pi-search"></i>
+      <input type="text" pInputText [(ngModel)]="search" (ngModelChange)="onSearch()" [ngModelOptions]="{updateOn: 'blur'}" placeholder="Search">
+    </span>
+
+    <section class="playlist-section">
+      <h2 class="section__title">Most Popular Playlists</h2>
+      <app-playlists [playlists]="playlists"></app-playlists>
+    </section>
+
+    <section class="tracks-section">
+      <h2 class="section__title">Top 5 Tracks</h2>
+      <app-tracks [tracks]="tracks"></app-tracks>
+    </section>
+  </div>
+
+  <p-progressSpinner class="spinner" *ngIf="isLoading" [strokeWidth]="'4'"></p-progressSpinner>
+
+</main>

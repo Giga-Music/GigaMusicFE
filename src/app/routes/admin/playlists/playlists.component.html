@@ -1,0 +1,53 @@
+<section class="playlists-list">
+
+  <span class="p-input-icon-left playlist-search">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText [(ngModel)]="search" (ngModelChange)="onSearch()" [ngModelOptions]="{updateOn: 'blur'}" placeholder="Search">
+  </span>
+
+  <p-table [value]="playlists" [tableStyle]="{'min-width': '50rem'}" [class.loading]="isLoading">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Logo</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th class="actions">
+              <span>Actions</span>
+              <button pButton type="button" label="Create" class="p-button-primary" (click)="createPlaylist()"></button>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-playlist>
+        <tr>
+          <td><div class="item-image" [style.backgroundImage]="'url(' + playlist.imageUrl + ')'"></div></td>
+          <td>
+            {{playlist.name}}
+            <br>
+            <br>
+            <p-rating
+              [readonly]="true"
+              [stars]="5"
+              [cancel]="false"
+              [ngModel]="playlist.averageRating || 0">
+            </p-rating>
+          </td>
+          <td>{{playlist.description}}</td>
+          <td>
+            <span class="p-buttonset">
+              <button pButton type="button" label="Edit" icon="pi pi-check" class="p-button-outlined" (click)="editPlaylist(playlist)"></button>
+              <button pButton type="button" label="Delete" icon="pi pi-trash" class="p-button-outlined p-button-danger" (click)="deletePlaylist(playlist.id, $event)" [id]="'delete-'+playlist.id"></button>
+            </span>
+
+          </td>
+        </tr>
+    </ng-template>
+  </p-table>
+
+  <h4 *ngIf="!playlists?.length && !isLoading"><br>No playlists availiable.</h4>
+
+  <p-toast [position]="'bottom-right'"></p-toast>
+
+  <p-confirmPopup></p-confirmPopup>
+
+  <p-progressSpinner class="spinner" *ngIf="isLoading" [strokeWidth]="'4'"></p-progressSpinner>
+</section>

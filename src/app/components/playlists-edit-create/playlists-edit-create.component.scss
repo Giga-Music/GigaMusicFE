@@ -1,0 +1,40 @@
+
+.form{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+
+  .form-field{
+    margin-top: 30px;
+  }
+
+  .fields-wrap{
+    width: calc(100% - 215px);
+  }
+
+  .p-float-label, .p-inputtext{
+    width: 100%;
+  }
+
+  .left-img{
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-color: #acacac;
+  }
+
+  .buttons-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.error{
+  font-size: 13px;
+  color: rgb(223, 78, 78);
+}
