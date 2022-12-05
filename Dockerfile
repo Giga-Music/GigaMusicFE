@@ -1,27 +1,28 @@
+# Stage 1: Compile and Build angular codebase
+
+# Use official node image as the base image
 FROM node:16.13.0 as build
 
-RUN mkdir /app
-
 # Set the working directory
-WORKDIR /app
+WORKDIR /usr/local/app
 
 # Add the source code to app
-COPY . /app
-# Install all the dependenci
-RUN npm install
-#RUN npm install @angular/cli
+COPY ./ /usr/local/app/
 
+# Install all the dependencies
+RUN npm install
+
+# Generate the build of the application
 RUN npm run prod
 
+
 # Stage 2: Serve app with nginx server
+
 # Use official nginx image as the base image
-FROM nginx:1.20.1
+FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /app/dist/giga-music-fe /usr/share/nginx/html
+COPY --from=build /usr/local/app/dist/giga-music-fe /usr/share/nginx/html
 
-COPY /docker/nginx/nginx.conf /etc/nginx/conf.d
-
-EXPOSE 9086
-
-CMD ["nginx", "-g", "daemon off;"]
+# Expose port 80
+EXPOSE 80
