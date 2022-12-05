@@ -18,7 +18,7 @@ RUN npm run prod
 FROM nginx:1.20.1
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist/giga-music-fe /usr/share/nginx/html
 
 COPY /docker/nginx/nginx.conf /etc/nginx/conf.d
 
