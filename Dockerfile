@@ -25,6 +25,7 @@ FROM nginx:latest
 COPY --from=build /usr/local/app/dist/giga-music-fe /usr/share/nginx/html
 
 COPY /docker/nginx/nginx.conf /etc/nginx/conf.d
+COPY /docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
